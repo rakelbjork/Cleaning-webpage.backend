@@ -2,13 +2,9 @@ package com.example.nicecleaning.controller;
 
 
 import com.example.nicecleaning.dto.AppUserResponseDTO;
-import com.example.nicecleaning.entities.AppUser;
 import com.example.nicecleaning.security.AuthService;
 import com.example.nicecleaning.service.AppUserService;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
@@ -23,12 +19,9 @@ public class AppUserController {
         this.authService = authService;
     }
 
-    @GetMapping
-    public List<AppUserResponseDTO> findAllUsers(){
-        return appUserService.findAll()
-                .stream()
-                .map(AppUser::toResponseDTO)
-                .toList();
+    @GetMapping("/{email}")
+    public AppUserResponseDTO findAppUserByEmail(@PathVariable("email")String email){
+        return appUserService.findAppUserByEmail(email).toResponseDTO();
     }
 
 

@@ -17,7 +17,7 @@ public class AppUser {
     private int id;
 
     @Column(unique = true, nullable = false)
-    private String user;
+    private String email;
 
     @Column(nullable = false)
     private String password;
@@ -27,8 +27,8 @@ public class AppUser {
     @Column
     Set<Role> roles;
 
-    public AppUser(String user, String password, Set<Role> roles){
-        this.user = user;
+    public AppUser(String email, String password, Set<Role> roles){
+        this.email = email;
         this.password = password;
         this.roles = roles;
     }
@@ -37,7 +37,7 @@ public class AppUser {
     }
 
     public AppUserResponseDTO toResponseDTO(){
-        return new AppUserResponseDTO(id, user);
+        return new AppUserResponseDTO(id, email);
     }
 
     @Override
@@ -56,7 +56,7 @@ public class AppUser {
     public String toString() {
         return "AppUser{" +
                 "id=" + id +
-                ", user=" + user + '\'' +
+                ", user=" + email + '\'' +
                 ", password=" + password + '\'' +
                 ", roles=" + roles +
                 '}';
@@ -70,8 +70,8 @@ public class AppUser {
         this.id = id;
     }
 
-    public String getUser() {
-        return user;
+    public String getEmail() {
+        return email;
     }
 
     @Override
@@ -89,8 +89,8 @@ public class AppUser {
         return true;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setEmail(String user) {
+        this.email = user;
     }
 
     @Override

@@ -17,10 +17,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String user) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
         return (UserDetails) appUserRepo
-                .findAppUsersByUsernameIgnoreCase(user)
-                .orElseThrow();
+                .findAppUserByEmailIgnoreCase(email);
     }
 }

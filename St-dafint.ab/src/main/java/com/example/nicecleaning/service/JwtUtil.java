@@ -21,7 +21,7 @@ public class JwtUtil {
     public String generateToken(AppUser appUser){
 
         return Jwts.builder()
-                .setSubject(appUser.getUser())
+                .setSubject(appUser.getEmail())
                 .setId(String.valueOf(appUser.getId()))
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_MILLIS))
                 .signWith(keyPair.getPrivate())
