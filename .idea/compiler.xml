@@ -10,7 +10,12 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="St-dafint.ab" target="1.5" />
+      <module name="St-dafint.ab" target="17" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="St-dafint.ab" options="-parameters" />
+    </option>
   </component>
 </project>
