@@ -34,6 +34,7 @@ public class AppUserService implements UserDetailsService {
                         new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, email)));
     }
 
+    // Här skapas användare. Mejl kollas om den är tagen eller inte
     public String signUpUser(AppUser appUser) {
         boolean userExists = appUserRepo
                 .findByEmail(appUser.getEmail())

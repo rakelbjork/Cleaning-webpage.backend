@@ -27,7 +27,7 @@ public class CleanService {
     public Clean findById(int id){
         return cleanRepo.findById(id).orElseThrow();
     }
-
+// Lägger till en ny tvätt-tid
     public Clean addClean(String date, String time, String message, Long userId){
         AppUser appUser = appUserRepo.findById(userId).orElseThrow();
         return cleanRepo.save(new Clean(date, time, message, 0, 0, appUser));
@@ -37,6 +37,7 @@ public class CleanService {
         return cleanRepo.findCleanByDateAndId(date, id);
     }
 
+    // Hämtar användaren baserat på dess ID
     public void unscheduleClean(int id) {
         Clean clean = cleanRepo.getReferenceById(id);
         clean.setStatus(7);

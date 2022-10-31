@@ -23,7 +23,7 @@ public class Clean {
     @Column(nullable = false)
     // Visar vilken status som städningen har.
     // 0 är obekräftad, 1 är bekräftad, 2 är bokad
-    // 3 är under utförande, 4 är utfört 5 är godkänt
+    // 3 är under utförande, 4 är utfört, 5 är godkänt
     // 6 är fakturerad, 7 är betald, 8 är avbokad
     private int status = 0;
 
