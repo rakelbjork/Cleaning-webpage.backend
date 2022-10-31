@@ -4,7 +4,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "api/registration")
+@RequestMapping(path = "/api/registration")
+@CrossOrigin(origins = {"http://localhost:3000"})
 @AllArgsConstructor
 public class RegistrationController {
 
