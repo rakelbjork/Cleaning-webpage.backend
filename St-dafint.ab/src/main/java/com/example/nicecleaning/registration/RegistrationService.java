@@ -1,8 +1,8 @@
 package com.example.nicecleaning.registration;
 
-import com.example.nicecleaning.appuser.AppUser;
-import com.example.nicecleaning.appuser.AppUserRole;
-import com.example.nicecleaning.appuser.AppUserService;
+import com.example.nicecleaning.entities.AppUser;
+import com.example.nicecleaning.entities.AppUserRole;
+import com.example.nicecleaning.services.AppUserService;
 import com.example.nicecleaning.registration.token.ConfirmationToken;
 import com.example.nicecleaning.registration.token.ConfirmationTokenService;
 import lombok.AllArgsConstructor;
