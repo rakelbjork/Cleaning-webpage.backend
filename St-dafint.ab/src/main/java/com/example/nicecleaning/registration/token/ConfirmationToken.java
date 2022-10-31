@@ -1,6 +1,6 @@
 package com.example.nicecleaning.registration.token;
 
-import com.example.nicecleaning.appuser.AppUser;
+import com.example.nicecleaning.entities.AppUser;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

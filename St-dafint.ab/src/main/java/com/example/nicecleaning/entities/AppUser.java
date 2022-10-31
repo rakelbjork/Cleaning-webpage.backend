@@ -1,5 +1,6 @@
-package com.example.nicecleaning.appuser;
+package com.example.nicecleaning.entities;
 
+import com.example.nicecleaning.dto.AppUserResponseDTO;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,7 +38,7 @@ public class AppUser implements UserDetails {
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
     private Boolean locked = false;
-    private Boolean enabled = false;
+    private Boolean enabled = true;
 
     public AppUser(String firstName,
                    String lastName,
@@ -83,7 +84,7 @@ public class AppUser implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return !locked;
+        return true;
     }
 
     @Override
@@ -93,6 +94,10 @@ public class AppUser implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return enabled;
+        return true;
+    }
+
+    public AppUserResponseDTO toResponseDTO(){
+        return new AppUserResponseDTO(id, email, appUserRole.toString());
     }
 }

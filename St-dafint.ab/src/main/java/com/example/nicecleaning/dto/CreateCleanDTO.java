@@ -6,7 +6,7 @@ public record CreateCleanDTO(
         String optionalMessage,
         int id) {
 
-    public int appUserId() {
+    public long appUserId() {
         return id;
     }
 }
