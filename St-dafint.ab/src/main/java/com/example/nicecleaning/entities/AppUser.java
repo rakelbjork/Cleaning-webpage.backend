@@ -31,10 +31,10 @@ public class AppUser implements UserDetails {
             generator = "user_sequence"
     )
     private Long id;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
+    public String firstName;
+    public String lastName;
+    public String email;
+    public String password;
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
     private Boolean locked = false;
