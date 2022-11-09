@@ -1,10 +1,10 @@
 package com.example.nicecleaning.repo;
 
-import com.example.nicecleaning.entities.Clean;
+import com.example.nicecleaning.entities.Booking;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CleanRepo extends JpaRepository<Clean, Integer> {
+public interface CleanRepo extends JpaRepository<Booking, Integer> {
 
-    Clean findCleanByDateAndId(String date, int id);
+    Booking findCleanByDateAndId(String date, int id);
 }
 

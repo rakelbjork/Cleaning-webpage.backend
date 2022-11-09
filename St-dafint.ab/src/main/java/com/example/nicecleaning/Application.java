@@ -1,8 +1,5 @@
 package com.example.nicecleaning;
 
-import com.example.nicecleaning.entities.AppUser;
-import com.example.nicecleaning.entities.AppUserRole;
-import com.example.nicecleaning.entities.Clean;
 import com.example.nicecleaning.repo.AppUserRepo;
 import com.example.nicecleaning.repo.CleanRepo;
 import com.example.nicecleaning.services.AppUserService;
@@ -12,8 +9,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.util.Optional;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {

@@ -5,7 +5,7 @@ import com.example.nicecleaning.dto.CleanResponseDTO;
 import javax.persistence.*;
 
 @Entity
-public class Clean {
+public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,7 +39,7 @@ public class Clean {
     // Vilken användare som bokade städningen
     private AppUser appUser;
 
-    public Clean(String date, String time, String optionalMessage, int cleanerId, int status, AppUser appUser) {
+    public Booking(String date, String time, String optionalMessage, int cleanerId, int status, AppUser appUser) {
         this.date = date;
         this.time = time;
         this.optionalMessage = optionalMessage;
@@ -48,7 +48,7 @@ public class Clean {
         this.appUser = appUser;
     }
 
-    public Clean(){
+    public Booking(){
 
     }
 

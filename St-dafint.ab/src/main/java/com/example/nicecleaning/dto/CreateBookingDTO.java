@@ -1,6 +1,6 @@
 package com.example.nicecleaning.dto;
 
-public record CreateCleanDTO(
+public record CreateBookingDTO(
         String date,
         String time,
         String optionalMessage,

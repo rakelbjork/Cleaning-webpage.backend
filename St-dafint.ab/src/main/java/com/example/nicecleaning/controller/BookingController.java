@@ -1,8 +1,8 @@
 package com.example.nicecleaning.controller;
 
 import com.example.nicecleaning.dto.CleanResponseDTO;
-import com.example.nicecleaning.dto.CreateCleanDTO;
-import com.example.nicecleaning.entities.Clean;
+import com.example.nicecleaning.dto.CreateBookingDTO;
+import com.example.nicecleaning.entities.Booking;
 import com.example.nicecleaning.services.CleanService;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,22 +11,22 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/clean")
 @CrossOrigin(origins = {"http://localhost:3000"}, methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST, RequestMethod.DELETE})
-public class CleanController {
+public class BookingController {
 
     private final CleanService cleanService;
 
-    public CleanController(CleanService cleanService){
+    public BookingController(CleanService cleanService){
         this.cleanService = cleanService;
     }
 
     @PostMapping
-    public CleanResponseDTO addClean(@RequestBody() CreateCleanDTO createCleanDTO){
+    public CleanResponseDTO addClean(@RequestBody() CreateBookingDTO createBookingDTO){
         return cleanService
                 .addClean(
-                        createCleanDTO.date(),
-                        createCleanDTO.time(),
-                        createCleanDTO.optionalMessage(),
-                        createCleanDTO.appUserId()
+                        createBookingDTO.date(),
+                        createBookingDTO.time(),
+                        createBookingDTO.optionalMessage(),
+                        createBookingDTO.appUserId()
                 )
                 .toResponseDTO();
     }
@@ -37,12 +37,12 @@ public class CleanController {
     ){
         return cleanService.findAll(contains)
                 .stream()
-                .map(Clean::toResponseDTO)
+                .map(Booking::toResponseDTO)
                 .toList();
     }
 
 
-    public Clean cleanDuplicateCheck(String date, int id){
+    public Booking cleanDuplicateCheck(String date, int id){
         return cleanService.cleanDuplicateCheck(date, id);
     }
 
