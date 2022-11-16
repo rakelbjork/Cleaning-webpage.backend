@@ -1,7 +1,7 @@
 package com.example.nicecleaning;
 
 import com.example.nicecleaning.repo.AppUserRepo;
-import com.example.nicecleaning.repo.CleanRepo;
+import com.example.nicecleaning.repo.BookingRepo;
 import com.example.nicecleaning.services.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -14,7 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class Application implements CommandLineRunner {
 
     @Autowired
-    CleanRepo cleanRepo;
+    BookingRepo bookingRepo;
     @Autowired
     AppUserService appUserService;
     @Autowired

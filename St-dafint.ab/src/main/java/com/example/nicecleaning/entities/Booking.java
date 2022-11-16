@@ -1,6 +1,6 @@
 package com.example.nicecleaning.entities;
 
-import com.example.nicecleaning.dto.CleanResponseDTO;
+import com.example.nicecleaning.dto.BookingResponseDTO;
 
 import javax.persistence.*;
 
@@ -10,7 +10,7 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // Varje städning får sitt egna unika ID
-    private int id;
+    private Long id;
 
     @Column(nullable = false)
     // Städtidens bokade datum. Planen är att göra om denna till en LocalDate sen
@@ -29,7 +29,7 @@ public class Booking {
 
     @Column
     // Ett id per städare. 0 betyder att ingen accepterat ditt pass
-    private int cleanerId = 0;
+    private Long cleanerId = 0L;
 
     @Column
     // Ett valfritt meddelande till städaren
@@ -39,7 +39,7 @@ public class Booking {
     // Vilken användare som bokade städningen
     private AppUser appUser;
 
-    public Booking(String date, String time, String optionalMessage, int cleanerId, int status, AppUser appUser) {
+    public Booking(String date, String time, String optionalMessage, Long cleanerId, int status, AppUser appUser) {
         this.date = date;
         this.time = time;
         this.optionalMessage = optionalMessage;
@@ -52,10 +52,10 @@ public class Booking {
 
     }
 
-    public CleanResponseDTO toResponseDTO() {
-        return new CleanResponseDTO(id, date, time, optionalMessage, status, appUser.getId());
+    public BookingResponseDTO toResponseDTO() {
+        return new BookingResponseDTO(id, date, time, optionalMessage, status, appUser.getId());
     }
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -75,7 +75,7 @@ public class Booking {
         return appUser;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -91,7 +91,7 @@ public class Booking {
         this.status = status;
     }
 
-    public void setCleanerId(int cleanerId) {
+    public void setCleanerId(Long cleanerId) {
         this.cleanerId = cleanerId;
     }
 
