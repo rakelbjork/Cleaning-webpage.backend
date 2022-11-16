@@ -1,74 +1,26 @@
 package com.example.nicecleaning.services;
 
-import com.example.nicecleaning.entities.AppUser;
 import com.example.nicecleaning.repo.AppUserRepo;
-import com.example.nicecleaning.registration.token.ConfirmationToken;
-import com.example.nicecleaning.registration.token.ConfirmationTokenService;
-import lombok.AllArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import com.example.nicecleaning.repo.BookingRepo;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
-import java.util.Optional;
-import java.util.UUID;
 
 
 @Service
-@AllArgsConstructor
-public class AppUserService implements UserDetailsService {
 
-    private final static String USER_NOT_FOUND_MSG =
-             "user with email %s not found";
+
+public class AppUserService {
+
     private final AppUserRepo appUserRepo;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
-    private final ConfirmationTokenService confirmationTokenService;
+    private final BookingRepo bookingRepo;
 
-    @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return appUserRepo
-                .findByEmail(email)
-                .orElseThrow(() ->
-                        new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, email)));
+
+    public AppUserService(AppUserRepo appUserRepo, BookingRepo bookingRepo) {
+        this.appUserRepo = appUserRepo;
+        this.bookingRepo = bookingRepo;
     }
 
-    // Här skapas användare. Mejl kollas om den är tagen eller inte
-    public String signUpUser(AppUser appUser) {
-        boolean userExists = appUserRepo
-                .findByEmail(appUser.getEmail())
-                .isPresent();
 
-        if (userExists) {
-            throw new IllegalStateException("Email already taken");
-        }
-        String encodedPassword = bCryptPasswordEncoder
-                .encode(appUser.getPassword());
 
-        appUser.setPassword(encodedPassword);
 
-        appUserRepo.save(appUser);
 
-        String token = UUID.randomUUID().toString();
-
-        ConfirmationToken confirmationToken = new ConfirmationToken(
-                token,
-                LocalDateTime.now(),
-                LocalDateTime.now().plusMinutes(15),
-                appUser
-        );
-
-        confirmationTokenService.saveConfirmationToken(
-                confirmationToken);
-        return token;
-    }
-
-    public int enableAppUser(String email) {
-        return appUserRepo.enableAppUser(email);
-    }
-
-    public Optional<AppUser> findAppUserByEmail(String email){
-        return appUserRepo.findAppUserByEmailIgnoreCase(email);
-    }
 }

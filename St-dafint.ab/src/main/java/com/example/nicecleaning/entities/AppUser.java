@@ -37,7 +37,7 @@ public class AppUser implements UserDetails {
     private Long id;
     public String firstName;
     public String lastName;
-    public String email;
+    public String username;
     public String password;
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
@@ -46,12 +46,12 @@ public class AppUser implements UserDetails {
 
     public AppUser(String firstName,
                    String lastName,
-                   String email,
+                   String username,
                    String password,
                    AppUserRole appUserRole) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
+        this.username = username;
         this.password = password;
         this.appUserRole = appUserRole;
     }
@@ -70,7 +70,7 @@ public class AppUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email;
+        return username;
     }
 
     public String getFirstName() {
@@ -102,6 +102,6 @@ public class AppUser implements UserDetails {
     }
 
     public AppUserResponseDTO toResponseDTO(){
-        return new AppUserResponseDTO(id, email, appUserRole.toString());
+        return new AppUserResponseDTO(id, username, appUserRole.toString());
     }
 }
