@@ -1,5 +1,7 @@
 package com.example.nicecleaning;
 
+import com.example.nicecleaning.entities.AppUser;
+import com.example.nicecleaning.entities.AppUserRole;
 import com.example.nicecleaning.repo.AppUserRepo;
 import com.example.nicecleaning.repo.BookingRepo;
 import com.example.nicecleaning.services.AppUserService;
@@ -28,7 +30,7 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        try{
+        try{appUserRepo.save(new AppUser("admin", "von", "admin", passwordEncoder.encode("123"), AppUserRole.ADMIN));
           //  appUserRepo.save(new AppUser("Johan", "Forsberg", "johan.forsberg@my.com", passwordEncoder.encode("1234"), AppUserRole.USER));
 
         }catch (DataIntegrityViolationException err )  {
