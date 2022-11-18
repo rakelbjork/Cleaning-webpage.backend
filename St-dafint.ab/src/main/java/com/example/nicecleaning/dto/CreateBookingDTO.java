@@ -6,7 +6,7 @@ public record CreateBookingDTO(
         String optionalMessage,
         int id) {
 
-    public long appUserId() {
+    public int appUserId() {
         return id;
     }
 }

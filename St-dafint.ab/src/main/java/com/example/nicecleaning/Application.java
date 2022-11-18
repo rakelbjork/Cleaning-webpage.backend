@@ -1,7 +1,7 @@
 package com.example.nicecleaning;
 
 import com.example.nicecleaning.entities.AppUser;
-import com.example.nicecleaning.entities.AppUserRole;
+import com.example.nicecleaning.entities.Role;
 import com.example.nicecleaning.repo.AppUserRepo;
 import com.example.nicecleaning.repo.BookingRepo;
 import com.example.nicecleaning.services.AppUserService;
@@ -11,6 +11,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+
+
+import java.util.Set;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
@@ -30,13 +34,14 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        try{appUserRepo.save(new AppUser("admin", "von", "admin", passwordEncoder.encode("123"), AppUserRole.ADMIN));
-          //  appUserRepo.save(new AppUser("Johan", "Forsberg", "johan.forsberg@my.com", passwordEncoder.encode("1234"), AppUserRole.USER));
+        try{
+            appUserRepo.save(new AppUser("Kund", "Kundson", "kundgatan", "111110000", "Kunden", passwordEncoder.encode( "123"), Set.of(Role.USER)));
+            AppUser appUser = appUserRepo.save(new AppUser("Admin", "VON", "adminsgatan", "1331", "admin", passwordEncoder.encode( "123"), Set.of(Role.ADMIN)));
 
+            System.out.println(appUser.getPassword());
         }catch (DataIntegrityViolationException err )  {
             System.out.println(err.getMessage());
         }
-
     }
 
 }

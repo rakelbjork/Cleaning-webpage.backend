@@ -1,7 +1,6 @@
 package com.example.nicecleaning.entities;
 
-public enum AppUserRole {
+public enum Role {
     USER,
-    EMPLOYEE,
     ADMIN
 }

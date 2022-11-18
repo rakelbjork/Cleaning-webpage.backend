@@ -42,7 +42,7 @@ public class BookingController {
                 .toList();
     }
     @GetMapping("/{id}/finished")
-    public List<BookingResponseDTO> findFinished(@PathVariable Long id){
+    public List<BookingResponseDTO> findFinished(@PathVariable int id){
         return bookingService.findSpecificList(id, 7)
                 .stream()
                 .map(Booking::toResponseDTO)
@@ -50,7 +50,7 @@ public class BookingController {
     }
 
     @GetMapping("/{id}/unbooked")
-    public List<BookingResponseDTO> findUnbooked(@PathVariable Long id){
+    public List<BookingResponseDTO> findUnbooked(@PathVariable int id){
         return bookingService.findSpecificList(id, 8)
                 .stream()
                 .map(Booking::toResponseDTO)
@@ -58,7 +58,7 @@ public class BookingController {
     }
 
     @GetMapping("/{id}/accepted")
-    public List<BookingResponseDTO> findAccepted(@PathVariable Long id){
+    public List<BookingResponseDTO> findAccepted(@PathVariable int id){
         return bookingService.findSpecificList(id, 5)
                 .stream()
                 .map(Booking::toResponseDTO)
@@ -66,12 +66,8 @@ public class BookingController {
     }
 
 
-    public Booking cleanDuplicateCheck(String date, Long id){
-        return bookingService.cleanDuplicateCheck(date, id);
-    }
-
     @PutMapping("/{id}")
-    public void unscheduleClean(@PathVariable Long id){
+    public void unscheduleClean(@PathVariable int id){
         System.out.println("Test");
         bookingService.unscheduleClean(id);
     }

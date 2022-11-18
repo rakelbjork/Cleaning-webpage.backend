@@ -10,7 +10,7 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // Varje städning får sitt egna unika ID
-    private Long id;
+    private int id;
 
     @Column(nullable = false)
     // Städtidens bokade datum. Planen är att göra om denna till en LocalDate sen
@@ -29,7 +29,7 @@ public class Booking {
 
     @Column
     // Ett id per städare. 0 betyder att ingen accepterat ditt pass
-    private Long cleanerId = 0L;
+    private int cleanerId = 0;
 
     @Column
     // Ett valfritt meddelande till städaren
@@ -39,7 +39,7 @@ public class Booking {
     // Vilken användare som bokade städningen
     private AppUser appUser;
 
-    public Booking(String date, String time, String optionalMessage, Long cleanerId, int status, AppUser appUser) {
+    public Booking(String date, String time, String optionalMessage, int cleanerId, int status, AppUser appUser) {
         this.date = date;
         this.time = time;
         this.optionalMessage = optionalMessage;
@@ -55,7 +55,7 @@ public class Booking {
     public BookingResponseDTO toResponseDTO() {
         return new BookingResponseDTO(id, date, time, optionalMessage, status, appUser.getId());
     }
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
@@ -75,7 +75,7 @@ public class Booking {
         return appUser;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -91,7 +91,7 @@ public class Booking {
         this.status = status;
     }
 
-    public void setCleanerId(Long cleanerId) {
+    public void setCleanerId(int cleanerId) {
         this.cleanerId = cleanerId;
     }
 

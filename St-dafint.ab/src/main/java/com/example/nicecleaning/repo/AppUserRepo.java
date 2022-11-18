@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface AppUserRepo extends JpaRepository<AppUser, Long> {
+public interface AppUserRepo extends JpaRepository<AppUser, Integer> {
 
     Optional<AppUser> findAppUserByUsername(String username);
-    AppUser findAppUserById(long id);
+    AppUser findAppUserById(int id);
 }
 

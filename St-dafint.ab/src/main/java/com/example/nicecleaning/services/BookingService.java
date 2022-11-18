@@ -24,26 +24,26 @@ public class BookingService {
         return bookingRepo.findAll();
     }
 
-    public Booking findById(Long id){
+    public Booking findById(int id){
         return bookingRepo.findById(id).orElseThrow();
     }
 // Lägger till en ny tvätt-tid
-    public Booking addClean(String date, String time, String message, Long userId){
+    public Booking addClean(String date, String time, String message, int userId){
         AppUser appUser = appUserRepo.findById(userId).orElseThrow();
-        return bookingRepo.save(new Booking(date, time, message, 0L, 0, appUser));
+        return bookingRepo.save(new Booking(date, time, message, 0, 0, appUser));
     }
 
-    public Booking cleanDuplicateCheck(String date, Long id) {
+    public Booking cleanDuplicateCheck(String date, int id) {
         return bookingRepo.findBookingByDateAndId(date, id);
     }
 
     // Hämtar användaren baserat på dess ID
-    public void unscheduleClean(Long id) {
+    public void unscheduleClean(int id) {
         Booking booking = findById(id);
         booking.setStatus(8);
         bookingRepo.save(booking);
     }
-    public List<Booking> findSpecificList(Long id, int status) {
+    public List<Booking> findSpecificList(int id, int status) {
         AppUser appUser = appUserRepo.findAppUserById(id);
         return bookingRepo.findBookingByAppUserAndStatus(appUser, status);
     }

@@ -1,4 +1,11 @@
 package com.example.nicecleaning.dto;
 
-public class CreateAppUserDTO {
+public record CreateAppUserDTO(
+        String username,
+        String firstname,
+        String lastname,
+        String adress,
+        String phonenumber,
+        String password) {
+
 }
