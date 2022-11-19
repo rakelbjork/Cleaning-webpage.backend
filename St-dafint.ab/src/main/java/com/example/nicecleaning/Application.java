@@ -35,7 +35,7 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         try{
-            appUserRepo.save(new AppUser("Kund", "Kundson", "kundgatan", "111110000", "Kunden", passwordEncoder.encode( "123"), Set.of(Role.USER)));
+            appUserRepo.save(new AppUser("Roger", "rgoz", "betrhu", "4528783", "Roger", passwordEncoder.encode( "123"), Set.of(Role.USER)));
             AppUser appUser = appUserRepo.save(new AppUser("Admin", "VON", "adminsgatan", "1331", "admin", passwordEncoder.encode( "123"), Set.of(Role.ADMIN)));
 
             System.out.println(appUser.getPassword());
