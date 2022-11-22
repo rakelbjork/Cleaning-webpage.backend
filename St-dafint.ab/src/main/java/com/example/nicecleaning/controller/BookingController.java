@@ -22,6 +22,7 @@ public class BookingController {
 
     @PostMapping
     public BookingResponseDTO addClean(@RequestBody() CreateBookingDTO createBookingDTO){
+        System.out.println(createBookingDTO.date());
         return bookingService
                 .addClean(
                         createBookingDTO.date(),

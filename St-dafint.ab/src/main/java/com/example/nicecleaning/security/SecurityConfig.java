@@ -41,12 +41,15 @@ public class SecurityConfig {
                  .cors().and()
                  .authorizeRequests(auth -> auth
                          .antMatchers("/api/auth/**").permitAll()
-                         .anyRequest().authenticated())
+                         .antMatchers("/api/booking/**").permitAll()
+                         .anyRequest().authenticated()
+                 )
                  .userDetailsService(userDetailsService)
                  .sessionManagement()
                  .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-                 httpSecurity.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+                 httpSecurity
+                         .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
                  return httpSecurity.build();
      }

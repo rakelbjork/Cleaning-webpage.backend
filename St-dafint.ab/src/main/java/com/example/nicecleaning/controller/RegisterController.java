@@ -5,7 +5,8 @@ import com.example.nicecleaning.services.AppUserService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/register")
+@RequestMapping("/api/auth")
+@CrossOrigin(origins = {"http://localhost:3000"}, methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST, RequestMethod.DELETE})
 public class RegisterController {
 
     private final AppUserService appUserService;
@@ -14,7 +15,7 @@ public class RegisterController {
         this.appUserService = appUserService;
     }
 
-    @PutMapping("/register")
+    @PostMapping("/register")
     public void createAppUserDTO(@RequestBody CreateAppUserDTO createAppUserDTO){
         System.out.println(createAppUserDTO);
          appUserService.createUser(createAppUserDTO);
